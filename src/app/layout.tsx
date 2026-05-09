@@ -7,8 +7,8 @@ import { AuthProvider } from "@/context/AuthContext";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "ChatFlow AI | Production-Ready AI WhatsApp Chatbot SaaS",
-  description: "Automate your business with AI WhatsApp Assistants. Capture leads, book appointments, and answer customers 24/7.",
+  title: "ChatFlow AI | Demo Interactiva del Agente IA",
+  description: "Probá nuestro Asistente Virtual con Inteligencia Artificial. Atención automatizada 24/7 y respuestas inmediatas.",
 };
 
 export default function RootLayout({
@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="es" className="scroll-smooth">
       <body className={`${inter.variable} font-sans antialiased`}>
         <AuthProvider>
           {children}
