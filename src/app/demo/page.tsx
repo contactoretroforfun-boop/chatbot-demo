@@ -240,7 +240,7 @@ export default function DemoPage() {
         >
           {/* Centered Phone Section */}
           <div className="w-full min-h-[100dvh] lg:min-h-screen flex flex-col justify-center items-center relative z-10 py-12 lg:py-0">
-            <div className="h-[85vh] sm:h-[800px] lg:h-[850px] w-full max-w-2xl mx-auto">
+            <div className="w-full max-w-2xl mx-auto flex justify-center">
                <ChatSimulator />
             </div>
 
