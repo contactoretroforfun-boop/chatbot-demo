@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ChatSimulator } from "@/components/chat/ChatSimulator";
-import { MessageSquare, ArrowLeft, Shield, Globe, Zap, Sparkles, ChevronLeft, ChevronRight, Star, Mail } from "lucide-react";
+import { MessageSquare, Shield, Globe, Zap, Sparkles, ChevronLeft, ChevronRight, Star, Mail, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { motion, AnimatePresence } from "framer-motion";
@@ -82,9 +82,9 @@ export default function DemoPage() {
   }, [reviews.length]);
 
   return (
-    <div className="min-h-screen bg-slate-900 flex flex-col lg:flex-row lg:overflow-hidden overflow-x-hidden overflow-y-auto font-sans w-full">
+    <div className="min-h-screen bg-slate-900 flex flex-col lg:flex-row overflow-x-hidden font-sans w-full">
       {/* Sidebar - Product Pitch (Scrollable on mobile & desktop) */}
-      <div className="order-2 lg:order-1 flex w-full lg:w-[400px] xl:w-1/3 flex-col justify-start gap-12 p-8 lg:p-12 bg-slate-900 text-white relative lg:border-r border-slate-800 lg:overflow-y-auto min-h-screen lg:h-screen pb-32 lg:pb-12">
+      <div className="order-2 lg:order-1 flex w-full lg:w-[400px] xl:w-1/3 flex-col justify-start gap-12 p-8 lg:p-12 bg-slate-900 text-white relative lg:border-r border-slate-800 lg:overflow-y-auto lg:h-screen pb-32 lg:pb-12 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none overflow-hidden">
            <div className="absolute top-[-10%] left-[-10%] w-[100%] h-[100%] bg-brand-500/20 blur-[120px] rounded-full" />
         </div>
@@ -195,46 +195,10 @@ export default function DemoPage() {
              ))}
            </div>
         </div>
-
-        {/* FAQs Section */}
-        <div className="relative z-10 pt-4 w-full max-w-lg mx-auto">
-          <div className="flex items-center gap-2 mb-6">
-            <Sparkles className="w-5 h-5 text-brand-500" />
-            <h2 className="text-xl font-bold tracking-tight">Preguntas Frecuentes</h2>
-          </div>
-          
-          <div className="space-y-3">
-            {faqs.map((faq, i) => (
-              <div key={i} className="bg-slate-800/40 border border-slate-700/50 rounded-2xl overflow-hidden transition-all hover:bg-slate-800/60">
-                <button 
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full p-5 text-left flex justify-between items-center focus:outline-none"
-                >
-                  <span className="font-medium text-sm text-slate-200 pr-4">{faq.q}</span>
-                  <ChevronRight className={`w-4 h-4 text-slate-500 transition-transform duration-300 ${openFaq === i ? 'rotate-90' : ''}`} />
-                </button>
-                <AnimatePresence>
-                  {openFaq === i && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="p-5 pt-0 text-sm text-slate-400 leading-relaxed border-t border-slate-700/50 mt-2">
-                        {faq.a}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
 
       {/* Main Simulator View (Fills first screen on mobile) */}
-      <div className="order-1 lg:order-2 flex-1 relative flex flex-col items-center justify-start pt-[35px] lg:pt-0 lg:justify-center bg-[#efeae2] dark:bg-slate-950 p-0 sm:p-4 lg:p-12 min-h-[100dvh] lg:min-h-0 overflow-hidden">
+      <div className="order-1 lg:order-2 flex-1 relative flex flex-col items-center justify-start bg-[#efeae2] dark:bg-slate-950 p-0 lg:p-0 min-h-[100dvh] lg:h-screen lg:overflow-y-auto">
         
         {/* Mobile-only Marquee Text */}
         <div className="lg:hidden absolute top-0 left-0 w-full bg-slate-900 border-b border-slate-800 overflow-hidden pointer-events-none z-20 flex items-center py-2 shadow-md">
@@ -272,26 +236,65 @@ export default function DemoPage() {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="w-full h-full max-w-3xl flex flex-col justify-center relative z-10"
+          className="w-full flex flex-col items-center"
         >
-          <div className="h-full sm:h-[800px] lg:h-[850px] w-full max-w-2xl mx-auto">
-             <ChatSimulator />
-          </div>
+          {/* Centered Phone Section */}
+          <div className="w-full min-h-[100dvh] lg:min-h-screen flex flex-col justify-center items-center relative z-10 py-12 lg:py-0">
+            <div className="h-[85vh] sm:h-[800px] lg:h-[850px] w-full max-w-2xl mx-auto">
+               <ChatSimulator />
+            </div>
 
-          <div className="hidden lg:flex justify-center mt-12 gap-8">
-             <div className="flex flex-col items-center">
-                <p className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-2">Simulando</p>
-                <Badge className="bg-slate-800 text-white border-slate-700 px-4 py-1">WhatsApp Cloud API</Badge>
-             </div>
-             <div className="flex flex-col items-center">
-                <p className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-2">Procesando</p>
-                <Badge className="bg-brand-500/10 text-brand-500 border-none px-4 py-1">Gemini 2.5 Flash</Badge>
-             </div>
+            <div className="hidden lg:flex justify-center mt-12 gap-8">
+               <div className="flex flex-col items-center">
+                  <p className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-2">Simulando</p>
+                  <Badge className="bg-slate-800 text-white border-slate-700 px-4 py-1">WhatsApp Cloud API</Badge>
+               </div>
+               <div className="flex flex-col items-center">
+                  <p className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-2">Procesando</p>
+                  <Badge className="bg-brand-500/10 text-brand-500 border-none px-4 py-1">Gemini 2.5 Flash</Badge>
+               </div>
+            </div>
+          </div>
+          
+          {/* FAQs Section Moved Here */}
+          <div className="relative z-10 w-full max-w-lg mx-auto pb-32 lg:pb-24 pt-8">
+            <div className="flex items-center justify-center gap-2 mb-8">
+              <Sparkles className="w-6 h-6 text-brand-500" />
+              <h2 className="text-2xl font-bold tracking-tight text-slate-800 dark:text-white">Preguntas Frecuentes</h2>
+            </div>
+            
+            <div className="space-y-4 px-4 lg:px-0">
+              {faqs.map((faq, i) => (
+                <div key={i} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden transition-all hover:border-slate-300 dark:hover:border-slate-700 shadow-sm">
+                  <button 
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    className="w-full p-5 text-left flex justify-between items-center focus:outline-none"
+                  >
+                    <span className="font-bold text-[15px] text-slate-800 dark:text-slate-200 pr-4">{faq.q}</span>
+                    <ChevronRight className={`w-5 h-5 text-brand-500 transition-transform duration-300 ${openFaq === i ? 'rotate-90' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {openFaq === i && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="p-5 pt-0 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 mt-2">
+                          {faq.a}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
+            </div>
           </div>
         </motion.div>
 
-        {/* CTA Floating Button & Contact Menu */}
-        <div className="absolute bottom-[100px] right-4 lg:bottom-8 lg:right-8 z-50 flex flex-col items-end">
+        {/* CTA Floating Button & Contact Menu (Desktop Only) */}
+        <div className="hidden lg:flex absolute bottom-[100px] right-4 lg:bottom-8 lg:right-8 z-50 flex-col items-end">
            <AnimatePresence>
              {showContactMenu && (
                <motion.div
@@ -346,6 +349,7 @@ export default function DemoPage() {
               <ArrowLeft className={`transition-transform duration-300 ${showContactMenu ? "-rotate-90" : "rotate-180"}`} />
            </button>
         </div>
+
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ const genAI = API_KEY ? new GoogleGenerativeAI(API_KEY) : null;
 console.log("==========================================");
 console.log("🤖 CHATFLOW AI SYSTEM STATUS");
 console.log(`🔑 API Key Configured: ${API_KEY ? "YES" : "NO"}`);
-console.log(`🧠 AI Engine: ${API_KEY ? "GEMINI REAL (gemini-2.5-flash)" : "MOCK FALLBACK"}`);
+console.log(`🧠 AI Engine: ${API_KEY ? "GEMINI REAL (gemini-2.5-flash-lite)" : "MOCK FALLBACK"}`);
 console.log("==========================================");
 
 export interface BusinessConfig {
@@ -38,13 +38,12 @@ export const aiService = {
       return this.getMockResponse(message, config);
     }
 
-    console.log(`🚀 [AI SYSTEM] Sending request to REAL GEMINI API (Model: gemini-2.5-flash)...`);
+    console.log(`🚀 [AI SYSTEM] Sending request to REAL GEMINI API (Model: gemini-2.5-flash-lite)...`);
 
     try {
       const model = genAI.getGenerativeModel({ 
-        model: "gemini-2.5-flash",
+        model: "gemini-2.5-flash-lite",
         generationConfig: {
-          maxOutputTokens: 500,
           temperature: 0.7,
         }
       });
@@ -97,7 +96,7 @@ export const aiService = {
     if (!genAI) return "INFO";
 
     try {
-      const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+      const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
       const prompt = `Clasificá el intento de este mensaje (HANDOVER, BOOKING, INFO, GREETING): "${message}". Respondé solo con la palabra.`;
       const result = await model.generateContent(prompt);
       return result.response.text().trim().toUpperCase();

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Send, User, MessageCircle, Bot, Shield, Loader2, Sparkles } from "lucide-react";
+import { Send, User, MessageCircle, Bot, Shield, Loader2, Sparkles, Mail, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -28,7 +28,9 @@ export function ChatSimulator() {
   ]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [showContactMenu, setShowContactMenu] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -36,8 +38,9 @@ export function ChatSimulator() {
     }
   }, [messages, isTyping]);
 
-  const handleSend = async () => {
-    if (!input.trim()) return;
+  const handleSend = async (e?: React.FormEvent) => {
+    e?.preventDefault();
+    if (!input.trim() || isTyping) return;
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -210,28 +213,86 @@ export function ChatSimulator() {
       </div>
 
       {/* Chat Input */}
-      <div className="p-4 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
-        <div className="flex gap-2 relative">
+      <div className="p-4 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 relative z-50">
+        <form onSubmit={handleSend} className="flex gap-2 relative">
           <input
+            ref={inputRef}
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSend()}
             placeholder="Escribí un mensaje..."
             className="flex-1 bg-white dark:bg-slate-800 border-none rounded-2xl px-5 py-3.5 text-sm focus:ring-2 focus:ring-brand-500 outline-none transition-all pr-12 shadow-inner"
           />
-          <Button 
-            onClick={handleSend}
-            disabled={!input.trim() || isTyping}
-            className="absolute right-1 top-1 bottom-1 w-11 h-11 p-0 rounded-xl bg-brand-500 hover:bg-brand-600 shadow-lg shadow-brand-500/20"
+          <button 
+            type="submit"
+            onPointerDown={(e) => {
+               // Evita que el input pierda el foco y se cierre el teclado en móviles
+               e.preventDefault();
+            }}
+            className={cn(
+              "absolute right-1 top-1 bottom-1 w-11 h-11 p-0 rounded-xl bg-brand-500 hover:bg-brand-600 shadow-lg shadow-brand-500/20 flex items-center justify-center text-white transition-all",
+              (!input.trim() || isTyping) && "opacity-50 cursor-not-allowed"
+            )}
           >
-            {isTyping ? <Loader2 className="w-5 h-5 animate-spin" /> : <Send className="w-4 h-4" />}
-          </Button>
-        </div>
-        <div className="flex justify-center mt-3">
+            {isTyping ? <Loader2 className="w-5 h-5 animate-spin" /> : <Send className="w-4 h-4 ml-1" />}
+          </button>
+        </form>
+        <div className="flex justify-center mt-3 mb-3">
            <p className="text-[10px] text-slate-400 font-bold flex items-center gap-1">
               <Sparkles className="w-3 h-3 text-brand-500" /> Potenciado por Gemini 2.5 Flash
            </p>
+        </div>
+
+        {/* The CTA Button (Mobile Only) */}
+        <div className="flex lg:hidden flex-col items-center relative z-50">
+           <AnimatePresence>
+             {showContactMenu && (
+               <motion.div
+                 initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                 animate={{ opacity: 1, y: 0, scale: 1 }}
+                 exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                 className="absolute bottom-full mb-3 bg-white dark:bg-slate-900 rounded-3xl p-4 shadow-2xl border border-slate-200 dark:border-slate-800 w-full max-w-[280px] flex flex-col gap-2"
+               >
+                 <div className="text-center mb-1">
+                    <h3 className="font-bold text-slate-800 dark:text-white text-base">Hablemos de tu bot</h3>
+                 </div>
+                 
+                 <a 
+                   href="https://wa.me/59896750713" 
+                   target="_blank" 
+                   rel="noreferrer"
+                   className="flex items-center gap-3 w-full bg-[#25D366] hover:bg-[#128C7E] text-white p-2.5 rounded-2xl transition-all shadow-md group"
+                 >
+                   <div className="bg-white/20 p-2 rounded-xl">
+                      <MessageCircle className="w-4 h-4 fill-current" />
+                   </div>
+                   <div className="text-left flex-1">
+                      <p className="font-bold text-sm">WhatsApp</p>
+                   </div>
+                   <ArrowLeft className="w-4 h-4 rotate-180 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0 mr-1" />
+                 </a>
+
+                 <a 
+                   href="mailto:Joel.0959@gmail.com" 
+                   className="flex items-center gap-3 w-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-white p-2.5 rounded-2xl transition-all group"
+                 >
+                   <div className="bg-slate-200 dark:bg-slate-700 p-2 rounded-xl">
+                      <Mail className="w-4 h-4" />
+                   </div>
+                   <div className="text-left flex-1">
+                      <p className="font-bold text-sm">Correo Electrónico</p>
+                   </div>
+                 </a>
+               </motion.div>
+             )}
+           </AnimatePresence>
+
+           <button 
+             onClick={() => setShowContactMenu(!showContactMenu)}
+             className="w-full max-w-[280px] bg-brand-500 text-white px-4 py-3 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all hover:bg-brand-600 focus:outline-none text-xs"
+           >
+              {showContactMenu ? "Cerrar menú" : "Quiero mi propio asistente IA"} 
+           </button>
         </div>
       </div>
       
