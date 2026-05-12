@@ -7,8 +7,27 @@ import { AuthProvider } from "@/context/AuthContext";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "ChatFlow AI | Demo Interactiva del Agente IA",
-  description: "Probá nuestro Asistente Virtual con Inteligencia Artificial. Atención automatizada 24/7 y respuestas inmediatas.",
+  title: "Nuvora AI | Asistente Inteligente para WhatsApp",
+  description: "Atención automatizada 24/7 para negocios y profesionales. Respuestas inteligentes y captación de clientes por WhatsApp.",
+  openGraph: {
+    title: "Nuvora AI | Asistente Inteligente para WhatsApp",
+    description: "Atención automatizada 24/7 para negocios y profesionales. Respuestas inteligentes y captación de clientes por WhatsApp.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Nuvora AI Preview",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nuvora AI | Asistente Inteligente para WhatsApp",
+    description: "Atención automatizada 24/7 para negocios y profesionales. Respuestas inteligentes y captación de clientes por WhatsApp.",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({

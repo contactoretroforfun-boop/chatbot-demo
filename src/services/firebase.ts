@@ -72,12 +72,12 @@ export const firebaseService = {
     // Return sensible defaults for demo purposes
     if (collectionName === COLLECTIONS.SETTINGS) {
       return {
-        businessName: "ChatFlow Demo",
-        aiPersonality: "Helpful and professional assistant",
+        businessName: "Nuvora AI Demo",
+        aiPersonality: "Asistente inteligente de élite, profesional y sofisticado",
         tone: "professional",
         faqs: [
-          { question: "What are your hours?", answer: "We are open 9am to 6pm, Monday to Friday." },
-          { question: "Where are you located?", answer: "Our main office is in the Tech District." }
+          { question: "¿Cuáles son sus horarios?", answer: "Atendemos de 9am a 6pm, de Lunes a Viernes." },
+          { question: "¿Dónde están ubicados?", answer: "Nuestras oficinas centrales están en el Distrito Tecnológico." }
         ]
       };
     }

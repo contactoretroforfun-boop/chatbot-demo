@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { MessageSquare, Menu, X } from "lucide-react";
+import { Sparkles, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+
+import { NuvoraLogo } from "@/components/ui/NuvoraLogo";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,32 +25,27 @@ export function Navbar() {
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
-        isScrolled ? "bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm" : "bg-transparent"
+        isScrolled ? "bg-[#070B14]/80 backdrop-blur-md border-b border-white/5" : "bg-transparent"
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="bg-brand-500 p-2 rounded-lg">
-            <MessageSquare className="text-white w-6 h-6" />
-          </div>
-          <span className="text-xl font-bold tracking-tight">
-            Chat<span className="text-brand-500">Flow</span>
-          </span>
+        <Link href="/" className="group origin-left">
+           <NuvoraLogo size="sm" centered={false} />
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
-          <Link href="#features" className="text-sm font-bold hover:text-brand-500 transition-colors">Funciones</Link>
-          <Link href="#solutions" className="text-sm font-bold hover:text-brand-500 transition-colors">Soluciones</Link>
-          <Link href="#pricing" className="text-sm font-bold hover:text-brand-500 transition-colors">Precios</Link>
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" asChild className="font-bold">
+        <div className="hidden md:flex items-center gap-10">
+          <Link href="#features" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Funciones</Link>
+          <Link href="#solutions" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Soluciones</Link>
+          <Link href="#pricing" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Precios</Link>
+          <div className="flex items-center gap-4 ml-4">
+            <Button variant="ghost" asChild className="font-bold text-slate-300 hover:text-white hover:bg-white/5">
               <Link href="/auth/login">Entrar</Link>
             </Button>
-            <Button variant="outline" className="rounded-full px-6 border-brand-500 text-brand-500 font-bold hover:bg-brand-50" asChild>
+            <Button variant="outline" className="rounded-full px-6 border-white/10 text-white font-bold hover:bg-white/5" asChild>
               <Link href="/demo">Demo en Vivo</Link>
             </Button>
-            <Button className="rounded-full px-6 bg-brand-500 hover:bg-brand-600 font-bold" asChild>
+            <Button className="rounded-full px-6 bg-primary hover:bg-brand-600 font-bold text-white shadow-lg shadow-primary/20" asChild>
               <Link href="/auth/signup">Empezar Gratis</Link>
             </Button>
           </div>
@@ -56,7 +53,7 @@ export function Navbar() {
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden p-2"
+          className="md:hidden p-2 text-white"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X /> : <Menu />}
@@ -70,16 +67,16 @@ export function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 bg-white dark:bg-slate-900 border-b border-slate-200 p-6 flex flex-col gap-4 md:hidden shadow-xl"
+            className="absolute top-full left-0 right-0 bg-card border-b border-white/10 p-6 flex flex-col gap-4 md:hidden shadow-2xl"
           >
-            <Link href="#features" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold">Funciones</Link>
-            <Link href="#solutions" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold">Soluciones</Link>
-            <Link href="#pricing" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold">Precios</Link>
-            <hr className="border-slate-100" />
-            <Button variant="outline" className="w-full font-bold" asChild>
+            <Link href="#features" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-white">Funciones</Link>
+            <Link href="#solutions" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-white">Soluciones</Link>
+            <Link href="#pricing" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-white">Precios</Link>
+            <hr className="border-white/5" />
+            <Button variant="outline" className="w-full font-bold text-white border-white/10" asChild>
               <Link href="/auth/login">Entrar</Link>
             </Button>
-            <Button className="w-full bg-brand-500 font-bold" asChild>
+            <Button className="w-full bg-primary font-bold text-white" asChild>
               <Link href="/auth/signup">Empezar Gratis</Link>
             </Button>
           </motion.div>

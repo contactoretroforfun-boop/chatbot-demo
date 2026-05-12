@@ -10,68 +10,69 @@ import {
   CheckCircle2, 
   AlertCircle,
   Phone,
-  ShieldCheck
+  ShieldCheck,
+  Sparkles
 } from "lucide-react";
 
 export default function WhatsAppSettingsPage() {
   return (
-    <div className="space-y-8 animate-in">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div className="space-y-8 animate-in fade-in duration-700">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">WhatsApp Integration</h1>
-          <p className="text-muted-foreground">Connect and manage your WhatsApp Business Cloud API.</p>
+          <h1 className="text-4xl font-bold tracking-tight text-white">Integración de WhatsApp</h1>
+          <p className="text-slate-400 mt-1 font-medium">Gestiona tu conexión con Meta Cloud API para Nuvora AI.</p>
         </div>
-        <div className="flex gap-3">
-          <Button variant="outline" className="rounded-xl gap-2">
-            <RefreshCw className="w-4 h-4" /> Check Status
+        <div className="flex gap-4">
+          <Button variant="outline" className="rounded-2xl gap-2 border-white/10 hover:bg-white/5 text-slate-300">
+            <RefreshCw className="w-4 h-4" /> Verificar Estado
           </Button>
         </div>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 space-y-6">
+        <div className="lg:col-span-2 space-y-8">
           {/* Connection Card */}
-          <Card className="border-none shadow-premium glass">
-            <CardHeader className="flex flex-row items-center justify-between">
+          <Card className="border border-white/10 bg-card/40 backdrop-blur-3xl shadow-2xl rounded-[2.5rem] overflow-hidden">
+            <CardHeader className="p-8 flex flex-row items-center justify-between">
               <div>
-                <CardTitle>Connection Status</CardTitle>
-                <CardDescription>Real-time link with Meta Cloud API.</CardDescription>
+                <CardTitle className="text-2xl text-white">Estado de Conexión</CardTitle>
+                <CardDescription className="text-slate-400">Enlace en tiempo real con Meta Cloud API.</CardDescription>
               </div>
-              <div className="flex items-center gap-2 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 px-3 py-1 rounded-full text-xs font-bold">
-                <CheckCircle2 className="w-4 h-4" /> Connected
+              <div className="flex items-center gap-2 bg-primary/20 text-primary border border-primary/30 px-4 py-2 rounded-full text-[11px] font-black uppercase tracking-widest">
+                <CheckCircle2 className="w-4 h-4" /> Conectado
               </div>
             </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="p-4 rounded-xl border border-border bg-slate-50/50 dark:bg-slate-900/50">
-                  <p className="text-xs text-muted-foreground mb-1 uppercase font-bold tracking-wider">Phone Number ID</p>
+            <CardContent className="p-8 pt-0 space-y-8">
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div className="p-5 rounded-2xl border border-white/5 bg-white/[0.02] group hover:bg-white/[0.04] transition-all">
+                  <p className="text-[10px] text-slate-500 mb-2 uppercase font-black tracking-[0.15em]">Phone Number ID</p>
                   <div className="flex items-center justify-between">
-                    <code className="text-sm">348927492837492</code>
-                    <Copy className="w-4 h-4 text-muted-foreground cursor-pointer hover:text-brand-500" />
+                    <code className="text-sm text-white font-mono">348927492837492</code>
+                    <Copy className="w-4 h-4 text-slate-500 cursor-pointer hover:text-primary transition-colors" />
                   </div>
                 </div>
-                <div className="p-4 rounded-xl border border-border bg-slate-50/50 dark:bg-slate-900/50">
-                  <p className="text-xs text-muted-foreground mb-1 uppercase font-bold tracking-wider">Business Account ID</p>
+                <div className="p-5 rounded-2xl border border-white/5 bg-white/[0.02] group hover:bg-white/[0.04] transition-all">
+                  <p className="text-[10px] text-slate-500 mb-2 uppercase font-black tracking-[0.15em]">Business Account ID</p>
                   <div className="flex items-center justify-between">
-                    <code className="text-sm">928374928374928</code>
-                    <Copy className="w-4 h-4 text-muted-foreground cursor-pointer hover:text-brand-500" />
+                    <code className="text-sm text-white font-mono">928374928374928</code>
+                    <Copy className="w-4 h-4 text-slate-500 cursor-pointer hover:text-primary transition-colors" />
                   </div>
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl border border-border bg-slate-50/50 dark:bg-slate-900/50">
-                <p className="text-xs text-muted-foreground mb-1 uppercase font-bold tracking-wider">Access Token</p>
-                <div className="flex items-center justify-between gap-4">
-                  <code className="text-sm truncate">EAALk9ZC4ZA8BAMfGZCZAZCZCZCZCZCZCZCZCZCZCZCZCZCZCZCZCZCZCZCZCZCZCZCZC</code>
-                  <div className="flex gap-2">
-                    <Copy className="w-4 h-4 text-muted-foreground cursor-pointer" />
-                    <RefreshCw className="w-4 h-4 text-muted-foreground cursor-pointer" />
+              <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.02] group hover:bg-white/[0.04] transition-all">
+                <p className="text-[10px] text-slate-500 mb-3 uppercase font-black tracking-[0.15em]">Access Token (Permanente)</p>
+                <div className="flex items-center justify-between gap-6">
+                  <code className="text-xs text-white font-mono truncate opacity-60">EAALk9ZC4ZA8BAMfGZCZAZCZCZCZCZCZCZCZCZCZCZCZCZCZCZCZCZCZCZCZCZCZCZCZC</code>
+                  <div className="flex gap-3">
+                    <Copy className="w-5 h-5 text-slate-500 cursor-pointer hover:text-primary transition-colors" />
+                    <RefreshCw className="w-5 h-5 text-slate-500 cursor-pointer hover:text-primary transition-colors" />
                   </div>
                 </div>
               </div>
             </CardContent>
-            <CardFooter className="bg-slate-50/50 dark:bg-slate-900/50 p-4">
-               <Button variant="ghost" className="text-xs font-bold gap-2 ml-auto" asChild>
+            <CardFooter className="bg-white/[0.02] border-t border-white/5 p-6">
+               <Button variant="ghost" className="text-[11px] font-black uppercase tracking-widest text-primary hover:text-white hover:bg-primary/10 ml-auto gap-2" asChild>
                  <a href="https://developers.facebook.com" target="_blank" rel="noopener noreferrer">
                    Meta Developers Portal <ExternalLink className="w-3 h-3" />
                  </a>
@@ -80,75 +81,84 @@ export default function WhatsAppSettingsPage() {
           </Card>
 
           {/* Webhook Card */}
-          <Card className="border-none shadow-premium glass">
-            <CardHeader>
-              <CardTitle>Webhook Configuration</CardTitle>
-              <CardDescription>Setup these values in your Meta App Dashboard to receive messages.</CardDescription>
+          <Card className="border border-white/10 bg-card/40 backdrop-blur-3xl shadow-2xl rounded-[2.5rem] overflow-hidden">
+            <CardHeader className="p-8">
+              <CardTitle className="text-2xl text-white">Configuración de Webhook</CardTitle>
+              <CardDescription className="text-slate-400">Configura estos valores en el panel de Meta para recibir mensajes.</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <label className="text-sm font-bold">Callback URL</label>
-                <div className="flex gap-2">
+            <CardContent className="p-8 pt-0 space-y-6">
+              <div className="space-y-3">
+                <label className="text-[11px] font-black uppercase tracking-widest text-slate-500 ml-1">Callback URL</label>
+                <div className="flex gap-3">
                   <input 
                     readOnly
-                    value="https://your-domain.com/api/whatsapp/webhook"
-                    className="flex-1 px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 border border-border text-sm outline-none"
+                    value="https://nuvora.ai/api/whatsapp/webhook"
+                    className="flex-1 px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-sm text-white font-mono outline-none"
                   />
-                  <Button variant="outline" size="icon" className="rounded-xl"><Copy className="w-4 h-4" /></Button>
+                  <Button variant="outline" size="icon" className="rounded-xl border-white/10 hover:bg-primary/20 hover:text-primary transition-all shadow-xl shadow-primary/5">
+                    <Copy className="w-4 h-4" />
+                  </Button>
                 </div>
               </div>
-              <div className="space-y-2">
-                <label className="text-sm font-bold">Verify Token</label>
-                <div className="flex gap-2">
+              <div className="space-y-3">
+                <label className="text-[11px] font-black uppercase tracking-widest text-slate-500 ml-1">Verify Token</label>
+                <div className="flex gap-3">
                   <input 
                     readOnly
-                    value="chatflow_verify_token_123"
-                    className="flex-1 px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 border border-border text-sm outline-none"
+                    value="nuvora_verify_token_prod_2024"
+                    className="flex-1 px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-sm text-white font-mono outline-none"
                   />
-                  <Button variant="outline" size="icon" className="rounded-xl"><Copy className="w-4 h-4" /></Button>
+                  <Button variant="outline" size="icon" className="rounded-xl border-white/10 hover:bg-primary/20 hover:text-primary transition-all shadow-xl shadow-primary/5">
+                    <Copy className="w-4 h-4" />
+                  </Button>
                 </div>
               </div>
             </CardContent>
           </Card>
         </div>
 
-        <div className="space-y-6">
-          <Card className="border-none shadow-premium glass">
-            <CardHeader>
-               <div className="w-12 h-12 rounded-xl bg-brand-500 flex items-center justify-center text-white mb-4">
-                 <MessageCircle className="w-6 h-6" />
+        <div className="space-y-8">
+          <Card className="border border-white/10 bg-card/40 backdrop-blur-3xl shadow-2xl rounded-[2.5rem] overflow-hidden">
+            <CardHeader className="p-6">
+               <div className="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center text-primary mb-4 border border-primary/20 shadow-inner">
+                 <MessageCircle className="w-7 h-7" />
                </div>
-              <CardTitle className="text-lg">WhatsApp Health</CardTitle>
+              <CardTitle className="text-xl text-white">Salud del Canal</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-               <div className="flex justify-between text-sm">
-                 <span className="text-muted-foreground">API Latency</span>
-                 <span className="font-bold">240ms</span>
+            <CardContent className="p-6 pt-0 space-y-5">
+               <div className="flex justify-between items-center py-2 border-b border-white/5">
+                 <span className="text-sm text-slate-400 font-medium">Latencia API</span>
+                 <span className="text-sm font-bold text-white">185ms <span className="text-primary text-[10px] ml-1">↑ 5%</span></span>
                </div>
-               <div className="flex justify-between text-sm">
-                 <span className="text-muted-foreground">Message Success</span>
-                 <span className="font-bold">99.9%</span>
+               <div className="flex justify-between items-center py-2 border-b border-white/5">
+                 <span className="text-sm text-slate-400 font-medium">Éxito de Envío</span>
+                 <span className="text-sm font-bold text-white">99.9%</span>
                </div>
-               <div className="flex justify-between text-sm">
-                 <span className="text-muted-foreground">Webhooks Received</span>
-                 <span className="font-bold">12.4k</span>
+               <div className="flex justify-between items-center py-2 border-b border-white/5">
+                 <span className="text-sm text-slate-400 font-medium">Webhooks Recibidos</span>
+                 <span className="text-sm font-bold text-white">48.2k</span>
                </div>
             </CardContent>
           </Card>
 
-          <Card className="border-none shadow-premium glass bg-slate-900 text-white">
-            <CardHeader>
-              <CardTitle className="text-lg flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-brand-400" />
-                Meta Verification
+          <Card className="border border-white/10 bg-primary/5 backdrop-blur-3xl shadow-2xl rounded-[2.5rem] overflow-hidden border-primary/20 relative">
+            <div className="absolute top-0 right-0 p-4">
+               <Sparkles className="text-primary/40 w-12 h-12" />
+            </div>
+            <CardHeader className="p-6">
+              <CardTitle className="text-xl flex items-center gap-3 text-white">
+                <div className="p-1.5 rounded-lg bg-primary/20">
+                  <ShieldCheck className="w-5 h-5 text-primary" />
+                </div>
+                Meta Verificado
               </CardTitle>
             </CardHeader>
-            <CardContent>
-               <p className="text-sm opacity-80 mb-4">
-                 Your business account is verified. You can send unlimited messages to customers.
+            <CardContent className="p-6 pt-0">
+               <p className="text-sm text-slate-400 mb-6 font-medium leading-relaxed">
+                 Tu cuenta corporativa está verificada. Tienes acceso a envíos ilimitados y funciones premium de WhatsApp.
                </p>
-               <div className="flex items-center gap-2 text-brand-400 text-xs font-bold">
-                 <CheckCircle2 className="w-4 h-4" /> ACTIVE STATUS
+               <div className="inline-flex items-center gap-2 bg-primary/20 text-primary px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-lg shadow-primary/5">
+                 <CheckCircle2 className="w-4 h-4" /> ESTADO ACTIVO
                </div>
             </CardContent>
           </Card>

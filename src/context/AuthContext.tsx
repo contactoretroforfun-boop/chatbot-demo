@@ -29,13 +29,13 @@ const AuthContext = createContext<AuthContextType>({
 // Mock user for Demo Mode
 const MOCK_USER = {
   uid: "demo-user-123",
-  email: "demo@chatflow.ai",
-  displayName: "Demo Admin",
+  email: "demo@nuvora.ai",
+  displayName: "Nuvora Admin",
 };
 
 const MOCK_DATA = {
-  name: "Demo Admin",
-  businessName: "ChatFlow Demo Business",
+  name: "Nuvora Admin",
+  businessName: "Nuvora AI Demo Business",
   role: "admin",
 };
 

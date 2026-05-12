@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Star, ChevronDown, ChevronUp, MessageSquare, Quote } from "lucide-react";
+import { Star, ChevronDown, ChevronUp, Quote } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 
@@ -9,21 +9,21 @@ const testimonials = [
   {
     name: "Dr. Marcelo Rodríguez",
     role: "Director, Clínica Dental Sur",
-    content: "Implementar ChatFlow fue un cambio total. Antes perdíamos turnos porque no podíamos contestar a tiempo. Ahora la IA gestiona todo y nosotros solo nos preocupamos por atender a los pacientes.",
+    content: "Implementar Nuvora fue un cambio total. Antes perdíamos turnos porque no podíamos contestar a tiempo. Ahora la IA gestiona todo y nosotros solo nos preocupamos por la excelencia médica.",
     rating: 5,
     avatar: "MR"
   },
   {
     name: "Lucía Fernández",
     role: "Dueña, Gusto Gourmet",
-    content: "La facilidad con la que los clientes reservan mesa por WhatsApp es increíble. Automatizamos el 90% de las consultas sobre el menú y reservas. ¡Es una joya!",
+    content: "La sofisticación con la que los clientes reservan mesa es increíble. Automatizamos el 90% de las consultas. La estética premium de la plataforma se nota en cada detalle.",
     rating: 5,
     avatar: "LF"
   },
   {
     name: "Javier Méndez",
     role: "Coordinador, FitLife Studio",
-    content: "Los socios están chochos. Pueden consultar horarios y cupos de clases en segundos. El soporte de ChatFlow es excelente, siempre están para darnos una mano.",
+    content: "Los socios valoran la inmediatez. Pueden consultar horarios y cupos en segundos. Nuvora elevó el estándar de nuestra atención digital significativamente.",
     rating: 5,
     avatar: "JM"
   }
@@ -31,35 +31,37 @@ const testimonials = [
 
 const faqs = [
   {
-    question: "¿Es difícil de configurar?",
-    answer: "Para nada. Podés arrancar en menos de 15 minutos. Solo conectás tu número, subís tu información y la IA ya empieza a aprender sobre tu negocio."
+    question: "¿Es compleja la implementación?",
+    answer: "Diseñamos Nuvora para ser intuitivo. Podés tener tu asistente operativo en menos de 15 minutos. Simplemente integrás tu número, proporcionás la información de tu negocio y la IA comienza su proceso de aprendizaje."
   },
   {
-    question: "¿Funciona con mi número actual de WhatsApp?",
-    answer: "Sí, usamos la API oficial de WhatsApp Cloud, lo que te permite profesionalizar tu número actual o usar uno nuevo con todas las funciones de ChatFlow."
+    question: "¿Se integra con mi número corporativo?",
+    answer: "Absolutamente. Utilizamos la infraestructura oficial de WhatsApp Cloud API, lo que te permite profesionalizar tu comunicación manteniendo tu identidad de marca."
   },
   {
-    question: "¿La IA puede realmente agendar turnos?",
-    answer: "¡Obvio! Se integra con tu calendario para ofrecer horarios disponibles y confirmar el turno automáticamente, avisándote al instante."
+    question: "¿La IA gestiona agendamientos reales?",
+    answer: "Sí, Nuvora está diseñado para la acción. Se sincroniza con tus calendarios para ofrecer disponibilidad en tiempo real, confirmar citas y enviar recordatorios automáticamente."
   },
   {
-    question: "¿Qué pasa si la IA no sabe responder algo?",
-    answer: "Si la IA detecta que no tiene la respuesta o el cliente pide hablar con una persona, te avisa inmediatamente para que vos o alguien de tu equipo tome el control."
+    question: "¿Qué sucede con consultas complejas?",
+    answer: "Nuvora identifica matices. Si detecta una consulta que requiere criterio humano o el cliente solicita hablar con un representante, el sistema escala la conversación a tu equipo de forma inmediata."
   },
   {
-    question: "¿Puedo cancelar mi suscripción cuando quiera?",
-    answer: "Sí, no hay contratos raros ni permanencia. Podés cancelar tu plan en cualquier momento desde el panel de control, sin vueltas."
+    question: "¿Existe algún compromiso de permanencia?",
+    answer: "Creemos en el valor de nuestro producto. No existen contratos de permanencia. Podés gestionar tu suscripción de manera transparente desde tu panel de control en cualquier momento."
   }
 ];
 
 export function Testimonials() {
   return (
-    <section className="py-32 bg-slate-50 dark:bg-slate-900/50">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <Badge className="bg-brand-500/10 text-brand-600 border-none px-4 py-1 mb-4">Testimonios</Badge>
-          <h2 className="text-4xl font-bold mb-4 tracking-tight">Lo que dicen nuestros clientes</h2>
-          <p className="text-lg text-slate-500">Negocios reales, resultados reales con IA.</p>
+    <section className="py-32 bg-[#0B1020]/30 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="text-center mb-24">
+          <Badge variant="outline" className="bg-primary/5 text-primary border-primary/20 px-4 py-1.5 mb-6 rounded-full font-bold">Experiencias</Badge>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-white">Confianza de alto nivel</h2>
+          <p className="text-xl text-slate-400 font-medium">Líderes en diversas industrias transformando su comunicación con Nuvora.</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -70,24 +72,24 @@ export function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] shadow-sm border border-slate-100 dark:border-slate-800 relative"
+              className="bg-card/40 backdrop-blur-sm p-10 rounded-[2.5rem] shadow-sm border border-white/10 relative group hover:border-primary/30 transition-all duration-500"
             >
-              <Quote className="absolute top-6 right-8 text-brand-500/10 w-12 h-12" />
-              <div className="flex gap-1 mb-6">
+              <Quote className="absolute top-8 right-10 text-primary/10 w-16 h-16 transition-transform group-hover:scale-110 duration-500" />
+              <div className="flex gap-1 mb-8">
                 {[...Array(t.rating)].map((_, i) => (
-                  <Star key={i} size={16} className="fill-yellow-400 text-yellow-400" />
+                  <Star key={i} size={16} className="fill-primary text-primary" />
                 ))}
               </div>
-              <p className="text-slate-600 dark:text-slate-300 mb-8 leading-relaxed italic">
+              <p className="text-slate-300 mb-10 text-lg leading-relaxed font-medium italic">
                 "{t.content}"
               </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-brand-500 flex items-center justify-center text-white font-bold shadow-lg shadow-brand-500/20">
+              <div className="flex items-center gap-5">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold shadow-lg shadow-primary/20 text-xl">
                   {t.avatar}
                 </div>
                 <div>
-                  <h4 className="font-bold text-sm">{t.name}</h4>
-                  <p className="text-xs text-slate-400 font-medium">{t.role}</p>
+                  <h4 className="font-bold text-white text-lg">{t.name}</h4>
+                  <p className="text-sm text-slate-500 font-bold uppercase tracking-widest">{t.role}</p>
                 </div>
               </div>
             </motion.div>
@@ -102,25 +104,27 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-32 bg-white dark:bg-slate-950">
-      <div className="max-w-3xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 tracking-tight">Preguntas Frecuentes</h2>
-          <p className="text-slate-500 font-medium">Todo lo que necesitás saber para arrancar.</p>
+    <section id="faq" className="py-32 bg-background">
+      <div className="max-w-4xl mx-auto px-6">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-white">Consultas frecuentes</h2>
+          <p className="text-xl text-slate-400 font-medium">Respuestas claras para decisiones inteligentes.</p>
         </div>
 
         <div className="space-y-4">
           {faqs.map((faq, i) => (
             <div 
               key={i}
-              className="border border-slate-100 dark:border-slate-800 rounded-2xl overflow-hidden transition-all duration-300"
+              className={`border border-white/10 rounded-[2rem] overflow-hidden transition-all duration-500 ${openIndex === i ? "bg-card/40 border-primary/20 shadow-lg shadow-primary/5" : "bg-card/20 hover:bg-card/30"}`}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full p-6 flex items-center justify-between text-left hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors"
+                className="w-full p-8 flex items-center justify-between text-left focus:outline-none"
               >
-                <span className="font-bold text-slate-900 dark:text-white pr-4">{faq.question}</span>
-                {openIndex === i ? <ChevronUp className="text-brand-500 shrink-0" /> : <ChevronDown className="text-slate-400 shrink-0" />}
+                <span className="text-xl font-bold text-white pr-6">{faq.question}</span>
+                <div className={`p-2 rounded-full transition-all duration-300 ${openIndex === i ? "bg-primary text-white rotate-180" : "bg-white/5 text-slate-400"}`}>
+                  <ChevronDown className="w-5 h-5" />
+                </div>
               </button>
               
               <AnimatePresence>
@@ -129,9 +133,9 @@ export function FAQ() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
                   >
-                    <div className="px-6 pb-6 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                    <div className="px-8 pb-8 text-lg text-slate-400 leading-relaxed font-medium">
                       {faq.answer}
                     </div>
                   </motion.div>

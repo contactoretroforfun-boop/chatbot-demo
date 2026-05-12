@@ -3,16 +3,18 @@
 @theme {
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   
-  --color-brand-50: #e6f7f4;
-  --color-brand-100: #cceed9;
-  --color-brand-200: #99dbcc;
-  --color-brand-300: #66c9bf;
-  --color-brand-400: #33b7b2;
-  --color-brand-500: #00a884; /* WhatsApp Primary */
-  --color-brand-600: #009676;
-  --color-brand-700: #008468;
-  --color-brand-800: #00725a;
-  --color-brand-900: #00604c;
+  --color-brand-50: #eef1ff;
+  --color-brand-100: #daddff;
+  --color-brand-200: #b9bcff;
+  --color-brand-300: #9396ff;
+  --color-brand-400: #7c5cff;
+  --color-brand-500: #7C5CFF; /* Nuvora Primary */
+  --color-brand-600: #6a4ee0;
+  --color-brand-700: #5841c2;
+  --color-brand-800: #4634a3;
+  --color-brand-900: #342785;
+
+  --color-accent-blue: #4DA3FF;
 
   --color-whatsapp-green: #25D366;
   --color-whatsapp-teal: #075E54;
@@ -44,54 +46,54 @@
   --radius-2xl: 1.5rem;
   --radius-3xl: 2rem;
 
-  --shadow-premium: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
-  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-  --shadow-inner-premium: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --shadow-inner-premium: inset 0 2px 4px 0 rgba(255, 255, 255, 0.06);
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
-  --card: #ffffff;
-  --card-foreground: #0f172a;
-  --popover: #ffffff;
-  --popover-foreground: #0f172a;
-  --primary: #00a884;
-  --primary-foreground: #ffffff;
-  --secondary: #f1f5f9;
-  --secondary-foreground: #0f172a;
-  --muted: #f8fafc;
-  --muted-foreground: #64748b;
-  --accent: #f1f5f9;
-  --accent-foreground: #0f172a;
+  --background: #070B14;
+  --foreground: #FFFFFF;
+  --card: #0B1020;
+  --card-foreground: #FFFFFF;
+  --popover: #0B1020;
+  --popover-foreground: #FFFFFF;
+  --primary: #7C5CFF;
+  --primary-foreground: #FFFFFF;
+  --secondary: #0B1020;
+  --secondary-foreground: #B8C0D4;
+  --muted: #0B1020;
+  --muted-foreground: #B8C0D4;
+  --accent: #4DA3FF;
+  --accent-foreground: #FFFFFF;
   --destructive: #ef4444;
   --destructive-foreground: #f8fafc;
-  --border: #e2e8f0;
-  --input: #f1f5f9;
-  --ring: #00a884;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: #0B1020;
+  --ring: #7C5CFF;
   --radius: 0.75rem;
 }
 
 .dark {
-  --background: #0f172a;
-  --foreground: #f8fafc;
-  --card: #1e293b;
-  --card-foreground: #f8fafc;
-  --popover: #0f172a;
-  --popover-foreground: #f8fafc;
-  --primary: #00a884;
-  --primary-foreground: #ffffff;
-  --secondary: #1e293b;
-  --secondary-foreground: #f8fafc;
-  --muted: #0f172a;
-  --muted-foreground: #94a3b8;
-  --accent: #1e293b;
-  --accent-foreground: #f8fafc;
+  --background: #070B14;
+  --foreground: #FFFFFF;
+  --card: #0B1020;
+  --card-foreground: #FFFFFF;
+  --popover: #070B14;
+  --popover-foreground: #FFFFFF;
+  --primary: #7C5CFF;
+  --primary-foreground: #FFFFFF;
+  --secondary: #0B1020;
+  --secondary-foreground: #FFFFFF;
+  --muted: #070B14;
+  --muted-foreground: #B8C0D4;
+  --accent: #4DA3FF;
+  --accent-foreground: #FFFFFF;
   --destructive: #7f1d1d;
   --destructive-foreground: #f8fafc;
-  --border: #334155;
-  --input: #1e293b;
-  --ring: #00a884;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: #0B1020;
+  --ring: #7C5CFF;
 }
 
 @layer base {
@@ -99,21 +101,21 @@
     border-color: var(--border);
   }
   body {
-    @apply bg-background text-foreground transition-colors duration-300;
+    @apply bg-background text-foreground transition-colors duration-300 font-sans;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border border-white/20 dark:border-slate-800/20 shadow-glass;
+    @apply bg-card/70 backdrop-blur-md border border-white/10 shadow-glass;
   }
   
   .glass-dark {
-    @apply bg-slate-900/80 backdrop-blur-xl border border-slate-800 shadow-2xl;
+    @apply bg-background/80 backdrop-blur-xl border border-white/5 shadow-2xl;
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-br from-brand-500 to-whatsapp-teal;
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-brand-500 to-accent-blue;
   }
 
   .animate-float {
@@ -133,6 +135,15 @@
     background: transparent;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-slate-200 dark:bg-slate-800 rounded-full;
+    @apply bg-white/10 rounded-full;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
   }
 }

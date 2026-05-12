@@ -97,31 +97,31 @@ export default function DashboardLayout({
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <button className="flex items-center gap-3 pl-2 pr-1 py-1 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group outline-none">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-whatsapp-teal flex items-center justify-center text-white shadow-lg shadow-brand-500/20 group-active:scale-95 transition-transform">
+                <button className="flex items-center gap-3 pl-2 pr-1 py-1 rounded-2xl hover:bg-white/5 transition-colors group outline-none">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white shadow-lg shadow-primary/20 group-active:scale-95 transition-transform">
                     <User className="w-6 h-6" />
                   </div>
-                  <div className="text-left hidden lg:block">
-                    <p className="text-sm font-bold leading-none">Admin Demo</p>
-                    <p className="text-[10px] text-slate-500 mt-1 uppercase font-bold tracking-wider">Administrador</p>
+                  <div className="text-left hidden lg:block text-white">
+                    <p className="text-sm font-bold leading-none">Admin Nuvora</p>
+                    <p className="text-[10px] text-slate-500 mt-1 uppercase font-bold tracking-wider">Administrador de Élite</p>
                   </div>
-                  <ChevronDown className="w-4 h-4 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-200 transition-colors" />
+                  <ChevronDown className="w-4 h-4 text-slate-400 group-hover:text-white transition-colors" />
                 </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56 p-2 rounded-2xl shadow-2xl border-slate-200 dark:border-slate-800">
+              <DropdownMenuContent align="end" className="w-56 p-2 rounded-[1.5rem] shadow-2xl border-white/10 bg-[#0B1020] text-white">
                 <DropdownMenuLabel className="px-4 py-3">
                    <p className="text-sm font-bold">Mi Cuenta</p>
-                   <p className="text-[10px] text-slate-500 font-medium truncate mt-0.5">demo@chatflow.com</p>
+                   <p className="text-[10px] text-slate-500 font-medium truncate mt-0.5">admin@nuvora.ai</p>
                 </DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem className="p-2.5 rounded-xl cursor-pointer gap-3 text-sm font-medium">
+                <DropdownMenuSeparator className="bg-white/5" />
+                <DropdownMenuItem className="p-2.5 rounded-xl cursor-pointer gap-3 text-sm font-medium hover:bg-white/5">
                   <User size={16} /> Ajustes de Perfil
                 </DropdownMenuItem>
-                <DropdownMenuItem className="p-2.5 rounded-xl cursor-pointer gap-3 text-sm font-medium">
+                <DropdownMenuItem className="p-2.5 rounded-xl cursor-pointer gap-3 text-sm font-medium hover:bg-white/5">
                   <CreditCard size={16} /> Planes y Facturación
                 </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem className="p-2.5 rounded-xl cursor-pointer gap-3 text-sm font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20">
+                <DropdownMenuSeparator className="bg-white/5" />
+                <DropdownMenuItem className="p-2.5 rounded-xl cursor-pointer gap-3 text-sm font-medium text-red-400 hover:bg-red-500/10">
                    <LogOut size={16} /> Cerrar Sesión
                 </DropdownMenuItem>
               </DropdownMenuContent>

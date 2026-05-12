@@ -9,7 +9,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
-import { MessageSquare, Loader2, AlertCircle, CheckCircle2 } from "lucide-react";
+import { Sparkles, Loader2, AlertCircle, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 export default function SignupPage() {
@@ -28,11 +28,9 @@ export default function SignupPage() {
     setError(null);
 
     try {
-      // 1. Create User in Auth
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      // 2. Create User document in Firestore
       await setDoc(doc(db, "users", user.uid), {
         uid: user.uid,
         name,
@@ -42,26 +40,24 @@ export default function SignupPage() {
         createdAt: new Date().toISOString(),
       });
 
-      // 3. Create initial settings for the business
       await setDoc(doc(db, "settings", user.uid), {
         businessName,
         whatsappStatus: "disconnected",
-        aiPersonality: "Professional and helpful",
-        language: "en",
+        aiPersonality: "Profesional y servicial",
+        language: "es",
         updatedAt: new Date().toISOString(),
       });
 
       toast({
-        title: "Account created!",
-        description: "Welcome to ChatFlow. Let's set up your assistant.",
-        variant: "success",
+        title: "¡Cuenta creada!",
+        description: "Bienvenido a Nuvora AI. Vamos a configurar tu asistente.",
       });
       
       router.push("/dashboard");
     } catch (err: any) {
-      setError(err.message || "Failed to create account.");
+      setError(err.message || "Error al crear la cuenta.");
       toast({
-        title: "Signup Error",
+        title: "Error de registro",
         description: err.message,
         variant: "destructive",
       });
@@ -71,62 +67,69 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col items-center justify-center p-6">
-      <Link href="/" className="flex items-center gap-2 mb-8 group">
-        <div className="bg-brand-500 p-2 rounded-xl shadow-lg shadow-brand-500/20 group-hover:scale-110 transition-transform">
-          <MessageSquare className="text-white w-6 h-6" />
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6 relative overflow-hidden">
+      {/* Background Orbs */}
+      <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[30%] h-[30%] bg-accent/5 blur-[100px] rounded-full pointer-events-none" />
+
+      <Link href="/" className="flex items-center gap-3 mb-10 group relative z-10">
+        <div className="bg-primary p-2.5 rounded-xl shadow-lg shadow-primary/20 group-hover:scale-110 transition-all duration-500">
+          <Sparkles className="text-white w-7 h-7" />
         </div>
-        <span className="text-2xl font-bold tracking-tight">ChatFlow</span>
+        <span className="text-3xl font-bold tracking-tight text-white">Nuvora<span className="text-primary">AI</span></span>
       </Link>
 
-      <Card className="w-full max-w-md border-none shadow-2xl glass overflow-hidden">
-        <CardHeader className="space-y-1 pb-8">
-          <CardTitle className="text-2xl font-bold text-center">Get Started</CardTitle>
-          <CardDescription className="text-center">
-            Create your account to start automating
+      <Card className="w-full max-w-md border border-white/10 shadow-2xl bg-card/50 backdrop-blur-3xl rounded-[2.5rem] overflow-hidden relative z-10">
+        <CardHeader className="space-y-2 pb-8 pt-10 px-8">
+          <CardTitle className="text-3xl font-bold text-center text-white tracking-tight">Comienza hoy</CardTitle>
+          <CardDescription className="text-center text-slate-400 font-medium">
+            Crea tu cuenta y automatiza tu éxito
           </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-8 px-8">
           {error && (
-            <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-500 text-xs font-bold flex items-center gap-2 animate-in fade-in zoom-in">
-              <AlertCircle size={14} /> {error}
+            <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-bold flex items-center gap-3 animate-in fade-in slide-in-from-top-1">
+              <AlertCircle size={16} /> {error}
             </div>
           )}
 
-          <form onSubmit={handleSignup} className="space-y-4">
+          <form onSubmit={handleSignup} className="space-y-5">
             <div className="space-y-2">
-              <label className="text-sm font-bold ml-1">Full Name</label>
+              <label className="text-[11px] font-black uppercase tracking-widest text-slate-500 ml-1">Nombre Completo</label>
               <Input 
-                placeholder="John Doe" 
+                placeholder="Ej. Juan Pérez" 
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
                 disabled={isLoading}
+                className="bg-white/5 border-white/10 rounded-2xl h-12 px-5 focus:ring-primary/50 text-white"
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-bold ml-1">Business Name</label>
+              <label className="text-[11px] font-black uppercase tracking-widest text-slate-500 ml-1">Nombre de tu Negocio</label>
               <Input 
-                placeholder="My Awesome Clinic" 
+                placeholder="Ej. Clínica Dental Nuvora" 
                 value={businessName}
                 onChange={(e) => setBusinessName(e.target.value)}
                 required
                 disabled={isLoading}
+                className="bg-white/5 border-white/10 rounded-2xl h-12 px-5 focus:ring-primary/50 text-white"
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-bold ml-1">Email</label>
+              <label className="text-[11px] font-black uppercase tracking-widest text-slate-500 ml-1">Email Corporativo</label>
               <Input 
                 type="email" 
-                placeholder="name@example.com" 
+                placeholder="nombre@empresa.com" 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 disabled={isLoading}
+                className="bg-white/5 border-white/10 rounded-2xl h-12 px-5 focus:ring-primary/50 text-white"
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-bold ml-1">Password</label>
+              <label className="text-[11px] font-black uppercase tracking-widest text-slate-500 ml-1">Contraseña</label>
               <Input 
                 type="password" 
                 placeholder="••••••••" 
@@ -134,28 +137,33 @@ export default function SignupPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 disabled={isLoading}
+                className="bg-white/5 border-white/10 rounded-2xl h-12 px-5 focus:ring-primary/50 text-white"
               />
             </div>
-            <Button type="submit" className="w-full h-12 rounded-xl bg-brand-500 hover:bg-brand-600 font-bold shadow-lg shadow-brand-500/20 mt-2" disabled={isLoading}>
-              {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Create Account"}
+            <Button type="submit" className="w-full h-14 rounded-2xl bg-primary hover:bg-brand-600 font-bold shadow-xl shadow-primary/20 mt-4 text-white transition-all hover:scale-[1.02] active:scale-[0.98]" disabled={isLoading}>
+              {isLoading ? <Loader2 className="w-6 h-6 animate-spin" /> : "Crear Mi Cuenta de Élite"}
             </Button>
           </form>
 
-          <div className="space-y-3">
-             <div className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-brand-500 shrink-0 mt-0.5" />
-                <p className="text-[10px] text-slate-500 font-medium">14-day free trial on Business Plan</p>
+          <div className="space-y-4 pt-2">
+             <div className="flex items-start gap-3 group">
+                <div className="bg-primary/10 p-1 rounded-full group-hover:bg-primary/20 transition-colors">
+                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                </div>
+                <p className="text-[11px] text-slate-400 font-bold uppercase tracking-wider">14 días de prueba gratuita en Plan Business</p>
              </div>
-             <div className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-brand-500 shrink-0 mt-0.5" />
-                <p className="text-[10px] text-slate-500 font-medium">No credit card required to start</p>
+             <div className="flex items-start gap-3 group">
+                <div className="bg-primary/10 p-1 rounded-full group-hover:bg-primary/20 transition-colors">
+                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                </div>
+                <p className="text-[11px] text-slate-400 font-bold uppercase tracking-wider">Sin tarjeta de crédito obligatoria</p>
              </div>
           </div>
         </CardContent>
-        <CardFooter className="flex flex-col gap-4 border-t border-slate-100 dark:border-slate-800 p-8 bg-slate-50/50 dark:bg-slate-900/50">
-          <p className="text-sm text-slate-500 text-center">
-            Already have an account?{" "}
-            <Link href="/auth/login" className="text-brand-500 font-bold hover:underline">Sign in</Link>
+        <CardFooter className="flex flex-col gap-4 border-t border-white/5 p-10 bg-white/[0.02] mt-8">
+          <p className="text-sm text-slate-400 text-center font-medium">
+            ¿Ya tienes una cuenta?{" "}
+            <Link href="/auth/login" className="text-primary font-bold hover:text-white transition-colors">Inicia sesión</Link>
           </p>
         </CardFooter>
       </Card>

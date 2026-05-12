@@ -3,27 +3,31 @@ import { aiService, BusinessConfig } from "@/services/gemini";
 import { firebaseService, COLLECTIONS } from "@/services/firebase";
 
 export async function POST(req: NextRequest) {
+  console.log("📥 [API] Chat request received");
   try {
-    const { message, history, businessId } = await req.json();
+    const body = await req.json();
+    const { message, history, businessId } = body;
+    console.log(`📩 [API] Message: "${message}" | Business: ${businessId} | History: ${history?.length} msgs`);
 
     if (!message || !businessId) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
     // 1. Fetch Business Config from Firestore
-    // For this demo, we'll fetch from the 'settings' collection which we initialized in Signup
-    const settings: any = await firebaseService.getById(COLLECTIONS.SETTINGS, businessId);
-    
-    if (!settings) {
-      return NextResponse.json({ error: "Business settings not found" }, { status: 404 });
+    let settings: any = null;
+    try {
+      settings = await firebaseService.getById(COLLECTIONS.SETTINGS, businessId);
+    } catch (e) {
+      console.warn("Firebase fetch failed, using demo fallback");
     }
-
+    
+    // Default config for demo purposes
     const config: BusinessConfig = {
-      name: settings.businessName || "Our Business",
-      personality: settings.aiPersonality || "A helpful assistant",
-      tone: settings.tone || "professional",
-      faqs: settings.faqs || [],
-      handoverRules: settings.handoverRules || "If the user is frustrated, offer a human agent.",
+      name: settings?.businessName || "Nuvora AI Demo",
+      personality: settings?.aiPersonality || "Asistente experto de Nuvora AI",
+      tone: settings?.tone || "professional",
+      faqs: settings?.faqs || [],
+      handoverRules: settings?.handoverRules || "Si el cliente está muy interesado o tiene dudas complejas, sugerí hablar con un humano.",
     };
 
     // 2. Detect Intent
