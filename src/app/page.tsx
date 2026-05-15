@@ -55,10 +55,8 @@ export default function AgencyHomePage() {
             <div className="col-span-6 md:col-span-3">
               <h4 className="font-bold mb-10 uppercase text-[10px] tracking-[0.3em] text-slate-500">Contacto</h4>
               <ul className="space-y-5 text-[15px] font-bold">
-                <li><Link href="https://wa.me/59891746967" className="text-slate-400 hover:text-white transition-colors">WhatsApp</Link></li>
-                <li><Link href="#" className="text-slate-400 hover:text-white transition-colors">Email</Link></li>
-                <li><Link href="#" className="text-slate-400 hover:text-white transition-colors">Instagram</Link></li>
-                <li><Link href="#" className="text-slate-400 hover:text-white transition-colors">LinkedIn</Link></li>
+                <li><Link href={`https://wa.me/59891746967?text=${encodeURIComponent("Hola Nuvora! Me gustaría contactar con ustedes.")}`} className="text-slate-400 hover:text-white transition-colors">WhatsApp</Link></li>
+                <li><Link href="mailto:hola@nuvora.agency" className="text-slate-400 hover:text-white transition-colors">Email</Link></li>
               </ul>
             </div>
           </div>
