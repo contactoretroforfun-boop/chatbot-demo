@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { NuvoraLogo } from "@/components/ui/NuvoraLogo";
-import { MessageCircle, Globe, ExternalLink, Info } from "lucide-react";
+import { Globe } from "lucide-react";
 import { ServiceDialog, servicesData } from "./ServiceDialog";
 
 export function Footer() {
@@ -15,13 +15,6 @@ export function Footer() {
             <p className="text-slate-400 leading-relaxed mb-10 max-w-md text-lg font-medium">
               Somos una agencia digital boutique especializada en automatización y experiencias premium. Ayudamos a negocios uruguayos a escalar su impacto con tecnología de vanguardia.
             </p>
-            <div className="flex gap-5">
-              {[MessageCircle, Info, ExternalLink].map((Icon, i) => (
-                <Link key={i} href="#" className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-500 hover:text-primary hover:border-primary/30 transition-all duration-300">
-                  <Icon size={20} />
-                </Link>
-              ))}
-            </div>
           </div>
           
           <div className="col-span-6 md:col-span-3">
