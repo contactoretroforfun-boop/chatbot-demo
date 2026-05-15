@@ -29,7 +29,7 @@ const testimonials = [
 const faqs = [
   {
     question: "¿Es compleja la implementación?",
-    answer: "Diseñamos Nuvora para ser intuitivo. Podés tener tu asistente operativo en menos de 15 minutos. Simplemente integrás tu número, proporcionás la información de tu negocio y la IA comienza su proceso de aprendizaje."
+    answer: "Para nada. En Nuvora Agency nos encargamos de toda la configuración técnica y el entrenamiento de la IA. Una vez que tenemos la información de tu negocio, el servicio se entrega completamente funcional en un plazo de 2 a 5 días hábiles."
   },
   {
     question: "¿Se integra con mi número corporativo?",
