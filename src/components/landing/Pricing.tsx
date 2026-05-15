@@ -99,7 +99,7 @@ export function Pricing() {
           <Badge variant="outline" className="mb-6 border-primary/30 text-neon px-4 py-1.5 font-bold bg-primary/5 rounded-full uppercase tracking-widest">
             Inversión Inteligente
           </Badge>
-          <h2 className="text-5xl md:text-8xl font-black mb-8 text-white tracking-tighter leading-none">
+          <h2 className="text-4xl md:text-8xl font-black mb-8 text-white tracking-tighter leading-none">
             Elegí tu camino al <br /><span className="text-neon italic">éxito digital.</span>
           </h2>
           <p className="text-xl text-slate-400 font-medium max-w-2xl mx-auto leading-relaxed">
@@ -123,14 +123,14 @@ export function Pricing() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
                   viewport={{ once: true }}
-                  className={`relative p-12 rounded-[3.5rem] border backdrop-blur-3xl transition-all duration-500 group ${
+                  className={`relative p-8 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] border backdrop-blur-3xl transition-all duration-500 group ${
                     pack.popular 
                       ? "border-primary/50 bg-primary/5 shadow-[0_32px_64px_-16px_rgba(124,92,255,0.15)]" 
                       : "border-white/10 bg-white/[0.02]"
                   }`}
                 >
                   {pack.popular && (
-                    <div className="absolute top-0 right-12 -translate-y-1/2 bg-primary text-white text-[10px] font-black uppercase tracking-[0.2em] px-8 py-3 rounded-full shadow-2xl flex items-center gap-2">
+                    <div className="absolute top-0 right-6 md:right-12 -translate-y-1/2 bg-primary text-white text-[10px] font-black uppercase tracking-[0.2em] px-6 md:px-8 py-3 rounded-full shadow-2xl flex items-center gap-2">
                        <Sparkles size={14} fill="currentColor" /> MÁS POPULAR
                     </div>
                   )}
@@ -198,7 +198,7 @@ export function Pricing() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: i * 0.1 }}
                   viewport={{ once: true }}
-                  className="p-10 rounded-[2.5rem] border border-white/10 bg-white/[0.01] hover:bg-white/[0.03] hover:border-primary/20 transition-all duration-500 group"
+                  className="p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-white/10 bg-white/[0.01] hover:bg-white/[0.03] hover:border-primary/20 transition-all duration-500 group"
                 >
                    <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 mb-8 group-hover:scale-110 group-hover:text-primary transition-all duration-500">
                       <service.icon size={28} />
@@ -237,7 +237,7 @@ export function Pricing() {
         </div>
 
         {/* Final Trust Note */}
-        <div className="mt-40 p-12 rounded-[3.5rem] border border-white/5 bg-gradient-to-br from-white/[0.02] to-transparent flex flex-col md:flex-row items-center justify-between gap-10">
+        <div className="mt-40 p-8 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] border border-white/5 bg-gradient-to-br from-white/[0.02] to-transparent flex flex-col md:flex-row items-center justify-between gap-10">
            <div className="flex items-center gap-6">
               <div className="w-20 h-20 rounded-[2rem] bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
                  <Shield size={40} />
