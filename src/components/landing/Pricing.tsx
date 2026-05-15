@@ -239,15 +239,15 @@ export function Pricing() {
         {/* Final Trust Note */}
         <div className="mt-40 p-8 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] border border-white/5 bg-gradient-to-br from-white/[0.02] to-transparent flex flex-col md:flex-row items-center justify-between gap-10">
            <div className="flex items-center gap-6">
-              <div className="w-20 h-20 rounded-[2rem] bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+              <div className="w-20 h-20 rounded-3xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0">
                  <Shield size={40} />
               </div>
               <div className="space-y-1">
                  <h4 className="text-2xl font-black text-white">Presupuesto a medida</h4>
-                 <p className="text-slate-500 font-medium">Cada negocio es único. Ajustamos nuestros servicios a tu realidad.</p>
+                 <p className="text-slate-500 font-medium leading-tight">Cada negocio es único. Ajustamos nuestros servicios a tu realidad.</p>
               </div>
            </div>
-           <Button size="lg" className="bg-white text-black hover:bg-slate-200 rounded-full px-12 h-20 text-xl font-black transition-transform hover:scale-105" asChild>
+           <Button size="lg" className="bg-white text-black hover:bg-slate-200 rounded-full px-8 md:px-12 h-20 text-base md:text-xl font-black transition-transform hover:scale-105 whitespace-nowrap" asChild>
               <Link href={`https://wa.me/59891746967?text=${encodeURIComponent("Hola Nuvora! Me gustaría solicitar una cotización personalizada para mi negocio.")}`} target="_blank">
                  Solicitar Cotización Gratis
               </Link>
