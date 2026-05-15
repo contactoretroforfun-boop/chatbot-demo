@@ -8,21 +8,18 @@ import { Badge } from "@/components/ui/badge";
 const testimonials = [
   {
     name: "Dr. Marcelo Rodríguez",
-    role: "Director, Clínica Dental Sur",
     content: "Implementar Nuvora fue un cambio total. Antes perdíamos turnos porque no podíamos contestar a tiempo. Ahora la IA gestiona todo y nosotros solo nos preocupamos por la excelencia médica.",
     rating: 5,
     avatar: "MR"
   },
   {
     name: "Lucía Fernández",
-    role: "Dueña, Gusto Gourmet",
     content: "La sofisticación con la que los clientes reservan mesa es increíble. Automatizamos el 90% de las consultas. La estética premium de la plataforma se nota en cada detalle.",
     rating: 5,
     avatar: "LF"
   },
   {
     name: "Javier Méndez",
-    role: "Coordinador, FitLife Studio",
     content: "Los socios valoran la inmediatez. Pueden consultar horarios y cupos en segundos. Nuvora elevó el estándar de nuestra atención digital significativamente.",
     rating: 5,
     avatar: "JM"
@@ -59,7 +56,7 @@ export function Testimonials() {
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-24">
-          <Badge variant="outline" className="bg-primary/5 text-primary border-primary/20 px-4 py-1.5 mb-6 rounded-full font-bold">Experiencias</Badge>
+          <Badge variant="outline" className="bg-primary/5 text-neon border-primary/20 px-4 py-1.5 mb-6 rounded-full font-bold">Experiencias</Badge>
           <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-white">Confianza de alto nivel</h2>
           <p className="text-xl text-slate-400 font-medium">Líderes en diversas industrias transformando su comunicación con Nuvora.</p>
         </div>
@@ -72,7 +69,7 @@ export function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="bg-card/40 backdrop-blur-sm p-10 rounded-[2.5rem] shadow-sm border border-white/10 relative group hover:border-primary/30 transition-all duration-500"
+              className="bg-card/40 backdrop-blur-sm p-10 rounded-[2.5rem] shadow-sm border border-white/10 relative group hover:border-primary/30 transition-all duration-500 flex flex-col"
             >
               <Quote className="absolute top-8 right-10 text-primary/10 w-16 h-16 transition-transform group-hover:scale-110 duration-500" />
               <div className="flex gap-1 mb-8">
@@ -83,14 +80,11 @@ export function Testimonials() {
               <p className="text-slate-300 mb-10 text-lg leading-relaxed font-medium italic">
                 "{t.content}"
               </p>
-              <div className="flex items-center gap-5">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold shadow-lg shadow-primary/20 text-xl">
+              <div className="flex items-center gap-5 mt-auto">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold shadow-lg shadow-primary/20 text-xl shrink-0">
                   {t.avatar}
                 </div>
-                <div>
-                  <h4 className="font-bold text-white text-lg">{t.name}</h4>
-                  <p className="text-sm text-slate-500 font-bold uppercase tracking-widest">{t.role}</p>
-                </div>
+                <h4 className="font-bold text-white text-lg tracking-tight">{t.name}</h4>
               </div>
             </motion.div>
           ))}

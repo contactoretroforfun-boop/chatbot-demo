@@ -44,7 +44,7 @@ export function ChatSimulator() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "¡Hola! 👋 Gracias por escribirnos. Soy el asistente virtual de Nuvora AI. ¿En qué puedo ayudarte hoy?",
+      text: "¡Hola! 👋 Gracias por escribirnos. Soy el asistente virtual de Nuvora Agency. ¿En qué puedo ayudarte hoy?",
       sender: "bot",
       timestamp: "11:30",
       options: [
@@ -158,7 +158,7 @@ export function ChatSimulator() {
                <div className="absolute top-0.5 right-0.5 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-[#0B1020]" />
             </div>
             <div>
-              <p className="font-bold text-[14px] text-white leading-none">Nuvora AI</p>
+              <p className="font-bold text-[14px] text-white leading-none">Nuvora Agency</p>
               <p className="text-[10px] text-slate-400 mt-1 font-medium">Asistente Virtual</p>
             </div>
           </div>

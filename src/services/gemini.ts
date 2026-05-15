@@ -55,13 +55,13 @@ Lo que acabas de experimentar es solo una fracción de las posibilidades:
 Para tu negocio, todo esto estaría configurado con tu información, tu nombre, tus servicios y conectado a tus herramientas.
 
 👉 ¿Quieres ver cómo quedaría para tu negocio específico?
-📲 Escribinos a +59896750713`;
+📲 Escribinos a +59891746967`;
     }
 
     if (messageNumber >= 5) {
       return `🤖 Esta demo ha llegado a su fin.
 
-Para continuar la conversación o recibir una propuesta personalizada para tu negocio, contactanos en +59896750713.
+Para continuar la conversación o recibir una propuesta personalizada para tu negocio, contactanos en +59891746967.
 
 ¡Gracias por tu interés! 😊`;
     }

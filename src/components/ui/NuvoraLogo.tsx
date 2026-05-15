@@ -1,33 +1,67 @@
-import Image from "next/image";
-import logo from "../../../public/logo.png";
+"use client";
 
-export function NuvoraLogo({ className = "", showSubheader = false, size = "md", centered = true }: { className?: string, showSubheader?: boolean, size?: "sm" | "md" | "lg", centered?: boolean }) {
+import Image from "next/image";
+import logoAgency from "../../../public/logo.png";
+import logoAi from "../../../public/logo-ai.png";
+import logoIsotype from "../../../public/logo-isotype.png";
+import logoNeon from "../../../public/logo-neon.png";
+import { cn } from "@/lib/utils";
+
+type LogoVariant = "icon" | "full" | "neon" | "neon-img" | "ai-badge" | "agency-official";
+type LogoType = "agency" | "ai" | "isotype" | "neon";
+
+interface NuvoraLogoProps {
+  variant?: LogoVariant;
+  logoType?: LogoType;
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
+  className?: string;
+  centered?: boolean;
+}
+
+export function NuvoraLogo({ 
+  variant = "full", 
+  logoType = "agency",
+  size = "md", 
+  className = "", 
+  centered = true 
+}: NuvoraLogoProps) {
+  
   const heights = {
-    sm: 42,
-    md: 64,
-    lg: 90
+    xs: 24,
+    sm: 36,
+    md: 48,
+    lg: 70,
+    xl: 120
   };
 
+  // Determine which image to use
+  let imageSrc = logoAgency;
+  if (logoType === "ai") imageSrc = logoAi;
+  if (logoType === "isotype") imageSrc = logoIsotype;
+  if (logoType === "neon" || variant === "neon-img") imageSrc = logoNeon;
+
   return (
-    <div className={`flex flex-col ${centered ? "items-center justify-center text-center" : "items-start justify-start text-left"} gap-0 ${className}`}>
-      <div className="relative flex items-center justify-center">
+    <div className={cn(
+      "flex items-center gap-3",
+      centered ? "justify-center" : "justify-start",
+      className
+    )}>
+      {/* CONTENEDOR DE IMAGEN */}
+      <div className="relative group">
         <Image 
-          src={logo} 
-          alt="Nuvora AI" 
+          src={imageSrc} 
+          alt="Nuvora" 
           height={heights[size]}
-          className="w-auto object-contain invert hue-rotate-180 brightness-[2] contrast-[1.1] select-none pointer-events-none"
+          className={cn(
+            "w-auto object-contain transition-all duration-500 select-none pointer-events-none",
+            // Only apply screen blending for the neon logo which has a black background
+            (variant === "neon-img" || logoType === "neon") && "mix-blend-screen brightness-125 contrast-110",
+            // No more filters for the official agency logo - show it as is
+            variant === "icon" && "hover:scale-110"
+          )}
           priority
         />
       </div>
-      
-      {showSubheader && (
-        <p className={`
-          ${size === "lg" ? "text-[8.5px] sm:text-[10px] lg:text-[13px] mt-5 tracking-[0.2em] sm:tracking-[0.3em] lg:tracking-[0.45em]" : "text-[8px] mt-3 tracking-[0.2em]"} 
-          font-black uppercase text-white/70 ml-1 leading-tight ${centered ? "text-center" : "text-left"}
-        `}>
-          Asistente Inteligente para WhatsApp
-        </p>
-      )}
     </div>
   );
 }

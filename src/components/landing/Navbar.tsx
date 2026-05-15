@@ -39,14 +39,11 @@ export function Navbar() {
           <Link href="#solutions" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Soluciones</Link>
           <Link href="#pricing" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Precios</Link>
           <div className="flex items-center gap-4 ml-4">
-            <Button variant="ghost" asChild className="font-bold text-slate-300 hover:text-white hover:bg-white/5">
-              <Link href="/auth/login">Entrar</Link>
-            </Button>
             <Button variant="outline" className="rounded-full px-6 border-white/10 text-white font-bold hover:bg-white/5" asChild>
-              <Link href="/demo">Demo en Vivo</Link>
+              <Link href="/nuvora-ai" className="flex items-center justify-center">Nuvora AI</Link>
             </Button>
             <Button className="rounded-full px-6 bg-primary hover:bg-brand-600 font-bold text-white shadow-lg shadow-primary/20" asChild>
-              <Link href="/auth/signup">Empezar Gratis</Link>
+              <Link href={`https://wa.me/59891746967?text=${encodeURIComponent("Hola Nuvora! Me gustaría contactar con ustedes.")}`} target="_blank" className="flex items-center justify-center">Contactar</Link>
             </Button>
           </div>
         </div>
@@ -74,10 +71,10 @@ export function Navbar() {
             <Link href="#pricing" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-white">Precios</Link>
             <hr className="border-white/5" />
             <Button variant="outline" className="w-full font-bold text-white border-white/10" asChild>
-              <Link href="/auth/login">Entrar</Link>
+              <Link href="/nuvora-ai" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-center">Nuvora AI</Link>
             </Button>
             <Button className="w-full bg-primary font-bold text-white" asChild>
-              <Link href="/auth/signup">Empezar Gratis</Link>
+              <Link href={`https://wa.me/59891746967?text=${encodeURIComponent("Hola Nuvora! Me gustaría contactar con ustedes.")}`} target="_blank" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-center">Contactar</Link>
             </Button>
           </motion.div>
         )}

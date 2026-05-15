@@ -89,7 +89,7 @@ export default function DemoPage() {
 
       {/* Header Navigation Area */}
       <header className="w-full max-w-7xl px-6 py-6 lg:py-10 flex items-center justify-between z-50">
-        <NuvoraLogo showSubheader={false} size="lg" centered={false} className="scale-90 lg:scale-100" />
+        <NuvoraLogo logoType="ai" size="lg" centered={false} className="scale-90 lg:scale-100" />
         <Link href="/" className="text-white/60 hover:text-white transition-colors text-sm font-bold flex items-center gap-2 group">
           <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
           <span>Volver al inicio</span>
@@ -104,12 +104,12 @@ export default function DemoPage() {
           <div className="space-y-6">
              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                <span className="text-primary text-[10px] lg:text-xs font-black uppercase tracking-widest">IA Inteligente en Vivo</span>
+                <span className="text-neon text-[10px] lg:text-xs uppercase tracking-widest">IA Inteligente en Vivo</span>
              </div>
              
              <h1 className="text-4xl lg:text-6xl font-black tracking-tight text-white leading-[1.05]">
                 Atención automática.<br />
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-shimmer">Más clientes.</span>
+                <span className="text-neon">Más clientes.</span>
              </h1>
              
              <p className="text-lg lg:text-xl text-slate-400 font-medium leading-relaxed max-w-lg">
@@ -121,7 +121,7 @@ export default function DemoPage() {
           <div className="space-y-10">
             <div className="space-y-6">
                <Link 
-                 href="https://wa.me/59896750713" 
+                 href="https://wa.me/59891746967" 
                  target="_blank"
                  className="group relative inline-flex items-center justify-center gap-4 bg-primary text-white font-black py-5 px-10 rounded-2xl transition-all duration-300 shadow-[0_20px_50px_-15px_rgba(124,92,255,0.5)] hover:shadow-[0_25px_60px_-10px_rgba(124,92,255,0.7)] active:scale-95 w-full sm:w-auto overflow-hidden text-lg"
                >

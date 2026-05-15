@@ -49,6 +49,20 @@
   --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   --shadow-inner-premium: inset 0 2px 4px 0 rgba(255, 255, 255, 0.06);
+
+  --animate-text-shimmer: text-shimmer 2.5s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes text-shimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
 }
 
 :root {
@@ -118,14 +132,9 @@
     @apply bg-clip-text text-transparent bg-gradient-to-br from-brand-500 to-accent-blue;
   }
 
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
+  .text-neon {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-white to-primary bg-[length:200%_auto] drop-shadow-[0_0_15px_rgba(124,92,255,0.4)] font-bold;
+    animation: text-shimmer 2.5s linear infinite;
   }
 
   .custom-scrollbar::-webkit-scrollbar {

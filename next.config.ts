@@ -4,20 +4,10 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: '/',
-        destination: '/demo',
-        permanent: false,
+        source: '/demo',
+        destination: '/nuvora-ai',
+        permanent: true,
       },
-      {
-        source: '/dashboard/:path*',
-        destination: '/demo',
-        permanent: false,
-      },
-      {
-        source: '/auth/:path*',
-        destination: '/demo',
-        permanent: false,
-      }
     ];
   },
 };
