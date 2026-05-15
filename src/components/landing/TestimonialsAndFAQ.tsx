@@ -45,7 +45,7 @@ const faqs = [
   },
   {
     question: "¿Existe algún compromiso de permanencia?",
-    answer: "Creemos en el valor de nuestro producto. No existen contratos de permanencia. Podés gestionar tu suscripción de manera transparente desde tu panel de control en cualquier momento."
+    answer: "Creemos en el valor de nuestro servicio. No existen contratos de permanencia ni letras chicas. Podés solicitar la cancelación o cualquier cambio en tu plan en cualquier momento simplemente contactándonos por WhatsApp."
   }
 ];
 
